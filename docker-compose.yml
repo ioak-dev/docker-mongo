@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  mongo:
+    image: mongo:4.2.3-bionic
+    container_name: mongo
+    restart: always
+    volumes: 
+      - /mnt/disks/sdb/data/db:/data/db
+    ports:
+        - 27017:27017
+    networks:
+      ioak-net:
+        aliases:
+          - mongo.docker
+
+networks:
+  ioak-net:
+      name: ioak-network
